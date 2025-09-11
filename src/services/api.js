@@ -100,93 +100,93 @@
 import axios from "axios";
 
 // ✅ Root only, no /api here
-const apiurl = "https://moe-backend-3.onrender.com";
+const apiurl = "https://moe-backend-3.onrender.com/api";
 // const apiurl = "http://localhost:9000";
 
 // ====================== AUTH ======================
 const signup = async (userData) => {
-  return await axios.post(`${apiurl}/api/auth/signup`, userData);
+  return await axios.post(`${apiurl}/auth/signup`, userData);
 };
 
 const login = async (credentials) => {
-  return await axios.post(`${apiurl}/api/auth/login`, credentials);
+  return await axios.post(`${apiurl}/auth/login`, credentials);
 };
 
 const refreshToken = async (token) => {
-  return await axios.post(`${apiurl}/api/auth/refresh-token`, { token });
+  return await axios.post(`${apiurl}/auth/refresh-token`, { token });
 };
 
 const forgotPassword = async (email) => {
-  return await axios.post(`${apiurl}/api/auth/forgot-password`, { email });
+  return await axios.post(`${apiurl}/auth/forgot-password`, { email });
 };
 
 const resetPassword = async (token, passwords) => {
-  return await axios.post(`${apiurl}/api/auth/reset-password/${token}`, passwords);
+  return await axios.post(`${apiurl}/auth/reset-password/${token}`, passwords);
 };
 
 const getMe = async () => {
-  return await axios.get(`${apiurl}/api/auth/me`);
+  return await axios.get(`${apiurl}/auth/me`);
 };
 
 // ====================== FILE UPLOAD ======================
 const uploadFile = async (file) => {
   const formData = new FormData();
   formData.append("file", file);
-  return await axios.post(`${apiurl}/api/upload/upload`, formData, {
+  return await axios.post(`${apiurl}/upload/upload`, formData, {
     headers: { "Content-Type": "multipart/form-data" },
   });
 };
 
 const getUploadHistory = async () => {
-  return await axios.get(`${apiurl}/api/upload/history`);
+  return await axios.get(`${apiurl}/upload/history`);
 };
 
 // ====================== KNOWLEDGE ======================
 const getKnowledgeStatus = async () => {
-  return await axios.get(`${apiurl}/api/knowledge/status`);
+  return await axios.get(`${apiurl}/knowledge/status`);
 };
 
 // ====================== PAYMENTS ======================
 const createSubscription = async (planData) => {
-  return await axios.post(`${apiurl}/api/payments/create-subscription`, planData);
+  return await axios.post(`${apiurl}/payments/create-subscription`, planData);
 };
 
 const confirmPayment = async (paymentData) => {
-  return await axios.post(`${apiurl}/api/payments/confirm-payment`, paymentData);
+  return await axios.post(`${apiurl}/payments/confirm-payment`, paymentData);
 };
 
 const createPaymentIntent = async (data) => {
-  return await axios.post(`${apiurl}/api/payments/create-payment-intent`, data);
+  return await axios.post(`${apiurl}/payments/create-payment-intent`, data);
 };
 
 const confirmPaymentIntent = async (data) => {
-  return await axios.post(`${apiurl}/api/payments/confirm-payment-intent`, data);
+  return await axios.post(`${apiurl}/payments/confirm-payment-intent`, data);
 };
 
 // ====================== QUESTIONS ======================
 const askQuestion = async (questionData) => {
-  return await axios.post(`${apiurl}/api/ask`, questionData);
+  return await axios.post(`${apiurl}/ask`, questionData);
 };
 
 const voteAnswer = async (answerId, vote) => {
-  return await axios.post(`${apiurl}/api/ask/${answerId}/vote`, { vote });
+  return await axios.post(`${apiurl}/ask/${answerId}/vote`, { vote });
 };
 
 const getCatalog = async (params) => {
-  return await axios.get(`${apiurl}/api/ask/catalog`, { params });
+  return await axios.get(`${apiurl}/ask/catalog`, { params });
 };
 
 // ====================== USER ======================
 const getProfile = async () => {
-  return await axios.get(`${apiurl}/api/users/profile`);
+  return await axios.get(`${apiurl}/users/profile`);
 };
 
 const updateProfile = async (profileData) => {
-  return await axios.patch(`${apiurl}/api/users/profile`, profileData);
+  return await axios.patch(`${apiurl}/users/profile`, profileData);
 };
 
 const getUsage = async () => {
-  return await axios.get(`${apiurl}/api/users/usage`);
+  return await axios.get(`${apiurl}/users/usage`);
 };
 
 // ====================== EXPORTS ======================
