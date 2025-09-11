@@ -99,94 +99,54 @@
 // export default api;
 import axios from "axios";
 
-const apiurl = "https://moe-backend-3.onrender.com";
-// const apiurl = "http://localhost:9000/api";
+// ====================== BASE URL ======================
+const apiurl = "https://moe-backend-3.onrender.com"; 
+// For local dev, uncomment:
+// const apiurl = "http://localhost:9000";
 
 // ====================== AUTH ======================
-const signup = async (userData) => {
-  return await axios.post(`${apiurl}/api/auth/signup`, userData);
-};
-
-const login = async (credentials) => {
-  return await axios.post(`${apiurl}/api/auth/login`, credentials);
-};
-
-const refreshToken = async (token) => {
-  return await axios.post(`${apiurl}/api/auth/refresh-token`, { token });
-};
-
-const forgotPassword = async (email) => {
-  return await axios.post(`${apiurl}/api/auth/forgot-password`, { email });
-};
-
-const resetPassword = async (token, passwords) => {
-  return await axios.post(`${apiurl}/api/auth/reset-password/${token}`, passwords);
-};
-
-const getMe = async () => {
-  return await axios.get(`${apiurl}/api/auth/me`);
-};
+const signup = (userData) => axios.post(`${apiurl}/api/auth/signup`, userData);
+const login = (credentials) => axios.post(`${apiurl}/api/auth/login`, credentials);
+const refreshToken = (token) => axios.post(`${apiurl}/api/auth/refresh-token`, { token });
+const forgotPassword = (email) => axios.post(`${apiurl}/api/auth/forgot-password`, { email });
+const resetPassword = (token, passwords) =>
+  axios.post(`${apiurl}/api/auth/reset-password/${token}`, passwords);
+const getMe = () => axios.get(`${apiurl}/api/auth/me`);
 
 // ====================== FILE UPLOAD ======================
-const uploadFile = async (file) => {
+const uploadFile = (file) => {
   const formData = new FormData();
   formData.append("file", file);
-  return await axios.post(`${apiurl}/api/upload/upload`, formData, {
+  return axios.post(`${apiurl}/api/upload/upload`, formData, {
     headers: { "Content-Type": "multipart/form-data" },
   });
 };
-
-const getUploadHistory = async () => {
-  return await axios.get(`${apiurl}/api/upload/history`);
-};
+const getUploadHistory = () => axios.get(`${apiurl}/api/upload/history`);
 
 // ====================== KNOWLEDGE ======================
-const getKnowledgeStatus = async () => {
-  return await axios.get(`${apiurl}/api/knowledge/status`);
-};
+const getKnowledgeStatus = () => axios.get(`${apiurl}/api/knowledge/status`);
 
 // ====================== PAYMENTS ======================
-const createSubscription = async (planData) => {
-  return await axios.post(`${apiurl}/api/payments/create-subscription`, planData);
-};
-
-const confirmPayment = async (paymentData) => {
-  return await axios.post(`${apiurl}/api/payments/confirm-payment`, paymentData);
-};
-
-const createPaymentIntent = async (data) => {
-  return await axios.post(`${apiurl}/api/payments/create-payment-intent`, data);
-};
-
-const confirmPaymentIntent = async (data) => {
-  return await axios.post(`${apiurl}/api/payments/confirm-payment-intent`, data);
-};
+const createSubscription = (planData) =>
+  axios.post(`${apiurl}/api/payments/create-subscription`, planData);
+const confirmPayment = (paymentData) =>
+  axios.post(`${apiurl}/api/payments/confirm-payment`, paymentData);
+const createPaymentIntent = (data) =>
+  axios.post(`${apiurl}/api/payments/create-payment-intent`, data);
+const confirmPaymentIntent = (data) =>
+  axios.post(`${apiurl}/api/payments/confirm-payment-intent`, data);
 
 // ====================== QUESTIONS ======================
-const askQuestion = async (questionData) => {
-  return await axios.post(`${apiurl}/api/ask`, questionData);
-};
-
-const voteAnswer = async (answerId, vote) => {
-  return await axios.post(`${apiurl}/api/ask/${answerId}/vote`, { vote });
-};
-
-const getCatalog = async (params) => {
-  return await axios.get(`${apiurl}/api/ask/catalog`, { params });
-};
+const askQuestion = (questionData) => axios.post(`${apiurl}/api/ask`, questionData);
+const voteAnswer = (answerId, vote) =>
+  axios.post(`${apiurl}/api/ask/${answerId}/vote`, { vote });
+const getCatalog = (params) => axios.get(`${apiurl}/api/ask/catalog`, { params });
 
 // ====================== USER ======================
-const getProfile = async () => {
-  return await axios.get(`${apiurl}/api/users/profile`);
-};
-
-const updateProfile = async (profileData) => {
-  return await axios.patch(`${apiurl}/api/users/profile`, profileData);
-};
-
-const getUsage = async () => {
-  return await axios.get(`${apiurl}/api/users/usage`);
-};
+const getProfile = () => axios.get(`${apiurl}/api/users/profile`);
+const updateProfile = (profileData) =>
+  axios.patch(`${apiurl}/api/users/profile`, profileData);
+const getUsage = () => axios.get(`${apiurl}/api/users/usage`);
 
 // ====================== EXPORTS ======================
 export {
