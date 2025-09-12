@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // const API_URL = "http://localhost:9000";
-const API_URL = "https://moe-backend-3.onrender.com/api/auth";
+const API_URL = "https://moe-backend-3.onrender.com/api";
 
 // Create axios instance with base URL including /api
 const api = axios.create({
@@ -37,7 +37,9 @@ api.interceptors.response.use(
 
 // Auth API - REMOVE /auth prefix since baseURL has /api
 export const authAPI = {
-  signup: (userData) => api.post("/auth/signup", userData),
+  // signup: (userData) => api.post("/auth/signup", userData),
+  // Test and fix this
+  signup: (userData) => axios.post("https://moe-backend-3.onrender.com/api/auth/signup", userData),
   login: (credentials) => api.post("/auth/login", credentials),
   refreshToken: (token) => api.post("/auth/refresh-token", { token }),
   forgotPassword: (email) => api.post("/auth/forgot-password", { email }),
