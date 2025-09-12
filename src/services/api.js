@@ -105,15 +105,15 @@ const apiurl = "https://moe-backend-3.onrender.com";
 
 // ====================== AUTH ======================
 const signup = async (userData) => {
-  return await axios.post(`${apiurl}/auth/signup`, userData);
+  return await axios.post(`${apiurl}/api/auth/signup`, userData);
 };
 
 const login = async (credentials) => {
-  return await axios.post(`${apiurl}/auth/login`, credentials);
+  return await axios.post(`${apiurl}/api/auth/login`, credentials);
 };
 
 const refreshToken = async (token) => {
-  return await axios.post(`${apiurl}/auth/refresh-token`, { token });
+  return await axios.post(`${apiurl}/api/auth/refresh-token`, { token });
 };
 
 const forgotPassword = async (email) => {
