@@ -1,9 +1,8 @@
 import axios from 'axios';
 
-const API_URL = "https://moe-backend-3.onrender.com";
+const API_URL = "https://moe-backend-3.onrender.com/api";
 
 const api = axios.create({
-  baseURL: API_URL,
   headers: {
     "Content-Type": "application/json",
   },
@@ -31,49 +30,56 @@ api.interceptors.response.use(
   }
 );
 
+// ---------- AUTH ----------
 export const authAPI = {
-  signup: (userData) => api.post("/api/auth/signup", userData),
-  login: (credentials) => api.post("/api/auth/login", credentials),
-  refreshToken: (token) => api.post("/api/auth/refresh-token", { token }),
-  forgotPassword: (email) => api.post("/api/auth/forgot-password", { email }),
-  resetPassword: (token, passwords) => api.post(`/api/auth/reset-password/${token}`, passwords),
-  getMe: () => api.get("/api/auth/me"),
+  signup: (userData) => api.post(`${API_URL}/auth/signup`, userData),
+  login: (credentials) => api.post(`${API_URL}/auth/login`, credentials),
+  refreshToken: (token) => api.post(`${API_URL}/auth/refresh-token`, { token }),
+  forgotPassword: (email) => api.post(`${API_URL}/auth/forgot-password`, { email }),
+  resetPassword: (token, passwords) => api.post(`${API_URL}/auth/reset-password/${token}`, passwords),
+  getMe: () => api.get(`${API_URL}/auth/me`),
 };
 
+// ---------- FILE UPLOAD ----------
 export const fileAPI = {
   upload: (file) => {
     const formData = new FormData();
     formData.append("file", file);
-    return api.post("/api/upload/upload", formData, {
+    return api.post(`${API_URL}/upload/upload`, formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
   },
-  getHistory: () => api.get("/api/upload/history"),
+  getHistory: () => api.get(`${API_URL}/upload/history`),
 };
 
+// ---------- KNOWLEDGE ----------
 export const knowledgeAPI = {
-  getStatus: () => api.get("/api/knowledge/status"),
+  getStatus: () => api.get(`${API_URL}/knowledge/status`),
 };
 
+// ---------- PAYMENTS ----------
 export const paymentAPI = {
-  createSubscription: (planData) => api.post("/api/payments/create-subscription", planData),
-  confirmPayment: (paymentData) => api.post("/api/payments/confirm-payment", paymentData),
-  createPaymentIntent: (data) => api.post("/api/payments/create-payment-intent", data),
-  confirmPaymentIntent: (data) => api.post("/api/payments/confirm-payment-intent", data),
+  createSubscription: (planData) => api.post(`${API_URL}/payments/create-subscription`, planData),
+  confirmPayment: (paymentData) => api.post(`${API_URL}/payments/confirm-payment`, paymentData),
+  createPaymentIntent: (data) => api.post(`${API_URL}/payments/create-payment-intent`, data),
+  confirmPaymentIntent: (data) => api.post(`${API_URL}/payments/confirm-payment-intent`, data),
 };
 
+// ---------- QUESTIONS ----------
 export const questionsAPI = {
-  askQuestion: (questionData) => api.post("/api/ask", questionData),
-  voteAnswer: (answerId, vote) => api.post(`/api/ask/${answerId}/vote`, { vote }),
-  getCatalog: (params) => api.get("/api/ask/catalog", { params }),
+  askQuestion: (questionData) => api.post(`${API_URL}/ask`, questionData),
+  voteAnswer: (answerId, vote) => api.post(`${API_URL}/ask/${answerId}/vote`, { vote }),
+  getCatalog: (params) => api.get(`${API_URL}/ask/catalog`, { params }),
 };
 
+// ---------- USER ----------
 export const userAPI = {
-  getProfile: () => api.get("/api/users/profile"),
-  updateProfile: (profileData) => api.patch("/api/users/profile", profileData),
-  getUsage: () => api.get("/api/users/usage"),
+  getProfile: () => api.get(`${API_URL}/users/profile`),
+  updateProfile: (profileData) => api.patch(`${API_URL}/users/profile`, profileData),
+  getUsage: () => api.get(`${API_URL}/users/usage`),
 };
 
+// ---------- TOKEN HELPERS ----------
 export const setAuthToken = (token) => {
   if (token) {
     localStorage.setItem("token", token);
