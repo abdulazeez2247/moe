@@ -218,41 +218,41 @@ const apiurl = "https://moe-backend-3.onrender.com";
 // const apiurl = "http://localhost:9000";
 
 // ====================== AUTH ======================
-const signup = (userData) => axios.post(`${apiurl}/api/auth/signup`, userData);
-const login = (credentials) => axios.post(`${apiurl}/api/auth/login`, credentials);
-const refreshToken = (token) => axios.post(`${apiurl}/api/auth/refresh-token`, { token });
-const forgotPassword = (email) => axios.post(`${apiurl}/api/auth/forgot-password`, { email });
-const resetPassword = (token, passwords) => axios.post(`${apiurl}/api/auth/reset-password/${token}`, passwords);
-const getMe = () => axios.get(`${apiurl}/api/auth/me`);
+const signup = (userData) => axios.post(`${apiurl}/auth/signup`, userData);
+const login = (credentials) => axios.post(`${apiurl}/auth/login`, credentials);
+const refreshToken = (token) => axios.post(`${apiurl}/auth/refresh-token`, { token });
+const forgotPassword = (email) => axios.post(`${apiurl}/auth/forgot-password`, { email });
+const resetPassword = (token, passwords) => axios.post(`${apiurl}/auth/reset-password/${token}`, passwords);
+const getMe = () => axios.get(`${apiurl}/auth/me`);
 
 // ====================== FILE UPLOAD ======================
 const uploadFile = (file) => {
   const formData = new FormData();
   formData.append("file", file);
-  return axios.post(`${apiurl}/api/upload/upload`, formData, {
+  return axios.post(`${apiurl}/upload/upload`, formData, {
     headers: { "Content-Type": "multipart/form-data" },
   });
 };
-const getUploadHistory = () => axios.get(`${apiurl}/api/upload/history`);
+const getUploadHistory = () => axios.get(`${apiurl}/upload/history`);
 
 // ====================== KNOWLEDGE ======================
-const getKnowledgeStatus = () => axios.get(`${apiurl}/api/knowledge/status`);
+const getKnowledgeStatus = () => axios.get(`${apiurl}/knowledge/status`);
 
 // ====================== PAYMENTS ======================
-const createSubscription = (planData) => axios.post(`${apiurl}/api/payments/create-subscription`, planData);
-const confirmPayment = (paymentData) => axios.post(`${apiurl}/api/payments/confirm-payment`, paymentData);
-const createPaymentIntent = (data) => axios.post(`${apiurl}/api/payments/create-payment-intent`, data);
-const confirmPaymentIntent = (data) => axios.post(`${apiurl}/api/payments/confirm-payment-intent`, data);
+const createSubscription = (planData) => axios.post(`${apiurl}/payments/create-subscription`, planData);
+const confirmPayment = (paymentData) => axios.post(`${apiurl}/payments/confirm-payment`, paymentData);
+const createPaymentIntent = (data) => axios.post(`${apiurl}/payments/create-payment-intent`, data);
+const confirmPaymentIntent = (data) => axios.post(`${apiurl}/payments/confirm-payment-intent`, data);
 
 // ====================== QUESTIONS ======================
-const askQuestion = (questionData) => axios.post(`${apiurl}/api/ask`, questionData);
-const voteAnswer = (answerId, vote) => axios.post(`${apiurl}/api/ask/${answerId}/vote`, { vote });
-const getCatalog = (params) => axios.get(`${apiurl}/api/ask/catalog`, { params });
+const askQuestion = (questionData) => axios.post(`${apiurl}/ask`, questionData);
+const voteAnswer = (answerId, vote) => axios.post(`${apiurl}/ask/${answerId}/vote`, { vote });
+const getCatalog = (params) => axios.get(`${apiurl}/ask/catalog`, { params });
 
 // ====================== USER ======================
-const getProfile = () => axios.get(`${apiurl}/api/users/profile`);
-const updateProfile = (profileData) => axios.patch(`${apiurl}/api/users/profile`, profileData);
-const getUsage = () => axios.get(`${apiurl}/api/users/usage`);
+const getProfile = () => axios.get(`${apiurl}/users/profile`);
+const updateProfile = (profileData) => axios.patch(`${apiurl}/users/profile`, profileData);
+const getUsage = () => axios.get(`${apiurl}/users/usage`);
 
 export {
   signup,
