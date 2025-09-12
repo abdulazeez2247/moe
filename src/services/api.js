@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // const API_URL = "http://localhost:9000";
-const API_URL = "https://moe-backend-3.onrender.com/api";
+const API_URL = "https://moe-backend-3.onrender.com";
 
 // Create axios instance with base URL including /api
 const api = axios.create({
