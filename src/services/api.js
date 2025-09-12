@@ -100,7 +100,7 @@
 import axios from "axios";
 
 // ✅ Root only, no /api here
-const apiurl = "https://moe-backend-3.onrender.com/api";
+const apiurl = "https://moe-backend-3.onrender.com";
 // const apiurl = "http://localhost:9000";
 
 // ====================== AUTH ======================
