@@ -2,11 +2,11 @@ import axios from 'axios';
 
 const API_URL = "https://moe-backend-3.onrender.com/api";
 
-const api = axios.create({
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
+// const api = axios.create({
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+// });
 
 api.interceptors.request.use(
   (config) => {
