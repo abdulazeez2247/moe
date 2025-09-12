@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { authAPI, setAuthToken } from '../services/api';
+import { login, setAuthToken } from '../services/api';
 
 const LoginInterface = ({ onLogin, onSwitchToSignup, onSwitchToForgotPassword }) => {
   const [formData, setFormData] = useState({
